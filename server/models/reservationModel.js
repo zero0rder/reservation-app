@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 
 const reservationSchema = mongoose.Schema({
-    student: String,
-    itemName: String,
-    cclNum: Number,
+    firstName: String,
+    lastName: String,
+    email: String,
+    reserveDateTime: Date,
+    reserveLocation: String,
     comments: String,
     createdAt: {
         type: Date,

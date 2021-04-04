@@ -25,8 +25,8 @@ export const getReservation = async (req, res) => {
 }
 
 export const createReservation = async (req, res) => {
-    const { student, itemName, cclNum, comments } = req.body;
-    const newReservation = new ReservationModel({ student, itemName, cclNum, comments });
+    const { firstName, lastName, email, reserveDateTime, reserveLocation, comments} = req.body;
+    const newReservation = new ReservationModel({ firstName, lastName, email, reserveDateTime, reserveLocation, comments });
     
     try {
        await newReservation.save();
