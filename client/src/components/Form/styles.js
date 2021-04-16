@@ -14,12 +14,15 @@ export default makeStyles((theme)=>({
         flexWrap: 'wrap',
         justifyContent: 'center',
     },
+    formCtrl: {
+        padding: theme.spacing(4),
+    },
     buttonSubmit: {
         marginBottom: 10,
     },
-    reservedPaper : {
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'center',
-    },
+    // reservedPaper : {
+    //     display: 'flex',
+    //     flexWrap: 'wrap',
+    //     justifyContent: 'center',
+    // },
 }));

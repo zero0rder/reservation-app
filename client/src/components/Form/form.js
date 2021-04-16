@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createReservation, updateReservation} from '../../actions/reservations';
-import { TextField, Button, Typography, Paper, Select, MenuItem /*InputLabel*/ } from '@material-ui/core';
+import { TextField, Button, Typography, Paper, Select, MenuItem, InputLabel, FormControl } from '@material-ui/core';
 import useStyles from './styles';
 const availLocals  = ['rm01', 'rm02', 'rm03', 'rm04', 'rm05', 'rm06'];
 const availTimes  = ['8:30', '9:15', '10:00', '10:30', '11:45', '12:30'];
@@ -45,20 +45,22 @@ const Form = ({currentId, setCurrentId}) => {
                 onChange={(e) => setReservationData({ ...reservationData, lastName: e.target.value })}/>
                 <TextField name='email' variant='outlined' label='Email' fullWidth value={reservationData.email} 
                 onChange={(e) => setReservationData({ ...reservationData, email: e.target.value })}/>
-                <Paper>
-                    {/* <InputLabel id='reserveDateTime'>Select Time</InputLabel> */}
-                    <Select value={reservationData.reserveTime} id='reserveTime' onChange={(e) => setReservationData({...reservationData, reserveTime: e.target.value})}>
+                <FormControl className={classes.formCtrl}>
+                    <InputLabel id='reserveTime'>Times</InputLabel>
+                    <Select value={reservationData.reserveTime} labelId='reserveTime' onChange={(e) => setReservationData({...reservationData, reserveTime: e.target.value})}>
                         { availTimes.map((l, i) => ( 
                             <MenuItem key={i} id={`timeOpt-${i}`} value={l}>{l.toUpperCase()}</MenuItem> 
                         ))}
                     </Select>
-                    {/* <InputLabel id='reserveLocation'>Select Location</InputLabel> */}
-                    <Select value={reservationData.reserveLocation} id='reserveLocation' onChange={(e) => setReservationData({...reservationData, reserveLocation: e.target.value})}>
+                </FormControl>
+                <FormControl className={classes.formCtrl}>
+                    <InputLabel id='reserveLocation'>Locations</InputLabel>
+                    <Select value={reservationData.reserveLocation} labelId='reserveLocation' onChange={(e) => setReservationData({...reservationData, reserveLocation: e.target.value})}>
                         { availLocals.map((l, i) => ( 
                             <MenuItem key={i} id={`localeOpt-${i}`} value={l}>{l.toUpperCase()}</MenuItem> 
                         ))}
                     </Select>
-                </Paper>
+                </FormControl>
                 {/* COMMENT SECTION  */}
                 <TextField name='comments' variant='outlined' label='Comments' fullWidth multiline rows={4} value={reservationData.comments} 
                 onChange={(e) => setReservationData({ ...reservationData, comments: e.target.value })}/>
