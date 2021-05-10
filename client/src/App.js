@@ -9,7 +9,7 @@ import useStyles from './styles';
 const App = () => {
     const [currentId, setCurrentId] = useState(0);
     const dispatch = useDispatch();
-    const classes = useStyles();
+    const classes = useStyles(); 
 
     useEffect(()=> {
         dispatch(getReservations());
@@ -18,7 +18,7 @@ const App = () => {
     return (
         <Container maxWidth='lg'>
             <AppBar position="static" color="inherit">
-                <Typography className={classes.heading} variant="h2" align="center">Tech Lab Reservations</Typography>
+                <Typography className={classes.heading} variant="h2" align="center">Lab Reservations</Typography>
             </AppBar>
             <Grow in>
                 <Container className={classes.contentContainer}>
@@ -32,7 +32,6 @@ const App = () => {
                     </Grid>
                 </Container>
             </Grow>
-            {/* TODO: Admin Dashbord */}
         </Container>
     );
 }
