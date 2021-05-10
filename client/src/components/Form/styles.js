@@ -18,11 +18,17 @@ export default makeStyles((theme)=>({
         padding: theme.spacing(4),
     },
     buttonSubmit: {
-        marginBottom: 10,
+        marginBottom: '10px',
     },
-    // reservedPaper : {
-    //     display: 'flex',
-    //     flexWrap: 'wrap',
-    //     justifyContent: 'center',
-    // },
+    buttonGrid: {
+        marginTop: '15px',
+    },
+    localSelect: { 
+        width: '95px',
+        paddingRight: '12px',
+    },
+    timeSelect: {
+        width: '95px',
+        paddingRight: '12px',
+    },
 }));
