@@ -4,9 +4,9 @@ const reservationSchema = mongoose.Schema({
     firstName: String,
     lastName: String,
     email: String,
-    reserveTime: Date,
-    reserveLocation: String,
     comments: String,
+    reserveTime: String,
+    reserveLocation: String,
     createdAt: {
         type: Date,
         default: new Date()

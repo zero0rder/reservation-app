@@ -18,12 +18,12 @@ const Reservation = ({reservation, setCurrentId}) => {
                 <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(reservation._id)}><MoreHorizIcon fontSize="default" /></Button>
             </CardContent>
             <CardContent className={classes.overlay}>
-                <Typography variant="h6">{reservation.student}</Typography>
+                <Typography variant="h6">{reservation.firstName + ' ' + reservation.lastName}</Typography>
                 <Typography variant="body2">{moment(reservation.createdAt).fromNow()}</Typography>
             </CardContent>
             <CardContent>
-                <Typography>{reservation.itemName}</Typography>
-                <Typography>{reservation.cclNum}</Typography>
+                <Typography>Time: {reservation.reserveTime}</Typography>
+                <Typography>Location: {reservation.reserveLocation}</Typography>
             </CardContent>
             <CardContent>
                 <Typography variant="body2" color="textSecondary" component="p">{reservation.comments}</Typography>
