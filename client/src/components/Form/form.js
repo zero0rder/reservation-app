@@ -13,8 +13,8 @@ const Form = ({currentId, setCurrentId}) => {
     const classes = useStyles();
 
     useEffect(() => {
-        if (reservation) setReservationData(reservationData);
-    }, [reservation, reservationData]);
+        if (reservation) setReservationData(reservation);
+    }, [reservation]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
