@@ -17,17 +17,17 @@ export default makeStyles(() => ({
     },
     overlay: {
         position: 'absolute',
-        top: '20px',
+        marginTop: '28px',
         left: '20px',
         color: 'white',
     },
-      overlay2: {
+    overlay2: {
         position: 'absolute',
-        top: '20px',
-        right: '20px',
+        paddingBottom: '5px',
+        right: '0px',
         color: 'white',
     },
-      cardActions: {
+    cardActions: {
         padding: '0 16px 8px 16px',
         display: 'flex',
         justifyContent: 'space-between',

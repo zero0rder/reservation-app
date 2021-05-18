@@ -14,13 +14,13 @@ const Reservation = ({reservation, setCurrentId}) => {
     return (
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'}/>
-            <div className={classes.overlay}>
+            <CardContent className={classes.overlay2}>
+                <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(reservation._id)}><MoreHorizIcon fontSize="default" /></Button>
+            </CardContent>
+            <CardContent className={classes.overlay}>
                 <Typography variant="h6">{reservation.student}</Typography>
                 <Typography variant="body2">{moment(reservation.createdAt).fromNow()}</Typography>
-            </div>
-            <div className={classes.overlay2}>
-                <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(reservation._id)}><MoreHorizIcon fontSize="default" /></Button>
-            </div>
+            </CardContent>
             <CardContent>
                 <Typography>{reservation.itemName}</Typography>
                 <Typography>{reservation.cclNum}</Typography>

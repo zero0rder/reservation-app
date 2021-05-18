@@ -9,8 +9,8 @@ const Reservations = ({setCurrentId}) => {
     return (
     !reservations.length ? <CircularProgress /> : (
             <Grid container alignItems='stretch' spacing={3}>
-                {reservations.map((reservation) => (
-                    <Grid key={reservation._id} item xs={12} sm={6} md={6}>
+                { reservations.map(reservation => (
+                    <Grid key={reservation._id} item xs={12} sm={10} md={6}>
                         <Reservation reservation={reservation} setCurrentId={setCurrentId}/>
                     </Grid>
                 ))}
