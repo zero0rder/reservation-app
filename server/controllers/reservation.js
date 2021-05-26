@@ -47,7 +47,15 @@ export const deleteReservation = async (req, res) => {
 }
 
 export const updateReservation = async (req, res) => {
-    // logic
+    const { firstName, lastName, email, comments, reserveTime, reserveLocation, _id } = req.body;
+    const updatedReservation = new ReservationModel({_id, firstName, lastName, email, comments, reserveTime, reserveLocation });
+
+    try {
+        await ReservationModel.findByIdAndUpdate(_id, updatedReservation);
+        res.status(201).json(updatedReservation);
+    }  catch(err){
+        res.status(404).json({message: err.message});
+    }
 }
 
 export default router;
