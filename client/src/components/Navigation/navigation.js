@@ -5,27 +5,26 @@ import * as ROUTES from '../../constants/routes';
 // import useStyles from './styles';
 
 const Navigation = () => {
-    // const classes = useStyles();
-    {/* <Typography className={classes.heading} variant="h2" align="center">Lab Reservations</Typography> */}
+    //const classes = useStyles();
     return (
         <AppBar position="static" color="inherit">
             <div>
                 <ul>
-                    {/* <li>
+                    <li>
                         <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-                    </li> */}
+                    </li>
                     <li>
                         <Link to={ROUTES.LANDING}>Landing</Link>
                     </li>
-                    {/* <li>
-                        <Link to={ROUTES.HOME}>-Home</Link>
+                    <li>
+                        <Link to={ROUTES.HOME}>Home</Link>
                     </li>
                     <li>
                         <Link to={ROUTES.ACCOUNT}>Account</Link>
                     </li>
                     <li>
                         <Link to={ROUTES.ADMIN}>Admin</Link>
-                    </li> */}
+                    </li>
                 </ul>
             </div>
         </AppBar> 

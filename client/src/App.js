@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Router, Route } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
 import { Container, Grow, Grid } from '@material-ui/core';
 import Reservations from './components/Reservations/reservations';
 import Navigation from './components/Navigation/navigation';
 import Form from './components/Form/form';
 import { getReservations } from './actions/reservations';
 import * as ROUTES from './constants/routes';
+import SignInPage from './SignInPage';
 import LandingPage from './LandingPage';
+import HomePage from './HomePage';
+import AccountPage from './AccountPage';
+import AdminPage from './AdminPage';
 import useStyles from './styles';
 
 const App = () => {
@@ -21,15 +25,18 @@ const App = () => {
     
     return (
         <Container maxWidth='lg'>
-            <Router>
+            <BrowserRouter>
                 <Navigation />
                 <hr/>
-                // adds routes
+                <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
                 <Route exact path={ROUTES.LANDING} component={LandingPage} />
-            </Router>
+                <Route exact path={ROUTES.HOME} component={HomePage} />
+                <Route exact path={ROUTES.ACCOUNT} component={AccountPage} />
+                <Route exact path={ROUTES.ADMIN} component={AdminPage} />
+            </BrowserRouter>
             <Grow in>
                 <Container className={classes.contentContainer}>
-                    <Grid container justify="space-between" alignItems="stretch" spacing={3}>
+                    <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
                         <Grid item xs={12} sm={6}>
                             <Reservations setCurrentId={setCurrentId}/>
                         </Grid>
