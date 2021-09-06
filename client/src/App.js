@@ -12,6 +12,7 @@ import LandingPage from './LandingPage';
 import HomePage from './HomePage';
 import AccountPage from './AccountPage';
 import AdminPage from './AdminPage';
+import SignUpPage from './SignUpPage';
 import useStyles from './styles';
 
 const App = () => {
@@ -33,6 +34,7 @@ const App = () => {
                 <Route exact path={ROUTES.HOME} component={HomePage} />
                 <Route exact path={ROUTES.ACCOUNT} component={AccountPage} />
                 <Route exact path={ROUTES.ADMIN} component={AdminPage} />
+                <Route exact path={ROUTES.SIGN_UP} component={SignUpPage} />
             </BrowserRouter>
             <Grow in>
                 <Container className={classes.contentContainer}>
