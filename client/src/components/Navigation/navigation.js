@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar } from '@material-ui/core';
 import * as ROUTES from '../../constants/routes';
+import SignOutButton from './signout';
 // import useStyles from './styles';
 
 const Navigation = () => {
@@ -26,6 +27,7 @@ const Navigation = () => {
                         <Link to={ROUTES.ADMIN}>Admin</Link>
                     </li>
                 </ul>
+                <SignOutButton />
             </div>
         </AppBar> 
     )

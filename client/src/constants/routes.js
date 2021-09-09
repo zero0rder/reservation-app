@@ -1,6 +1,7 @@
 export const LANDING = '/';
 export const SIGN_UP = '/signup';
 export const SIGN_IN = '/signin';
+export const SIGN_OUT = '/signout';
 //the home page is a protected route, which users can only access if they have been authenticated, 
 //implement the protection of the route using authorization mechanisms
 export const HOME = '/home';
