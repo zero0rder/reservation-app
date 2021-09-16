@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import dotenv from 'dotenv'; 
 dotenv.config();
 
@@ -21,6 +21,7 @@ class Firebase {
     
     getCreateUserWithEmailAndPassword = (email, password) => createUserWithEmailAndPassword(this.auth, email, password);
     getSignInWithEmailAndPassword = (email, password) => signInWithEmailAndPassword(this.auth, email, password);
+    getOnAuthStateChanged = (cb) => onAuthStateChanged(this.auth, cb);
     doSignOut = () => signOut(this.auth);
 }
 

@@ -7,6 +7,7 @@ import Navigation from './components/Navigation/navigation';
 import Form from './components/Form/form';
 import { getReservations } from './actions/reservations';
 import * as ROUTES from './constants/routes';
+import { withFireBase } from './components/Firebase';
 import SignInPage from './SignInPage';
 import LandingPage from './LandingPage';
 import HomePage from './HomePage';
@@ -15,19 +16,28 @@ import AdminPage from './AdminPage';
 import SignUpPage from './SignUpPage';
 import useStyles from './styles';
 
-const App = () => {
+const App = ({firebase}) => {
     const [currentId, setCurrentId] = useState(0);
+    const [authUser, setAuthUser] = useState({user: null});
     const dispatch = useDispatch();
     const classes = useStyles();
 
     useEffect(()=> {
         dispatch(getReservations());
-    }, [dispatch]);
+        firebase.getOnAuthStateChanged((userState) => {
+            if(userState) {
+                setAuthUser({user: true});
+            } else {
+                setAuthUser({user: null});
+            }
+        });
+
+    }, [dispatch, firebase]);
     
     return (
         <Container maxWidth='lg'>
             <BrowserRouter>
-                <Navigation />
+                <Navigation authUser={authUser} />
                 <hr/>
                 <Route exact path={ROUTES.SIGN_IN} component={SignInPage} />
                 <Route exact path={ROUTES.LANDING} component={LandingPage} />
@@ -52,4 +62,4 @@ const App = () => {
     );
 }
 
-export default App;
+export default withFireBase(App);
