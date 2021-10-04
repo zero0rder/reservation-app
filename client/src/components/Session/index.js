@@ -1,2 +1,3 @@
 import AuthUserContext from "./context";
-export{ AuthUserContext }
+import withAuth  from "./withAuth";
+export{ AuthUserContext, withAuth }
