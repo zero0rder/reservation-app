@@ -14,8 +14,7 @@ const AccountPage = () => {
     useEffect(() => {
         dispatch(getReservations());
     }, [dispatch])
-
-    console.log('user', authUser);
+    
     return (
         !reservations.length ? <CircularProgress /> : (
             <Grid container alignItems='stretch' spacing={3}>
