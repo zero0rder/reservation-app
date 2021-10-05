@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { AppBar } from '@material-ui/core';
 import * as ROUTES from '../../constants/routes';
 import SignOutButton from './signout';
+import { AuthUserContext } from '../Session/index';
 // import useStyles from './styles';
 
-const Navigation = ({authUser}) => {
-
-    return (
-        <AppBar position="static" color="inherit">
-            { authUser.user ? <AuthenticatedUser/> : <NonAuthenticatedUser/> }
-        </AppBar>
-    )
-}
+const Navigation = () => (
+    <AppBar position="static" color="inherit">
+        <AuthUserContext.Consumer>
+            { authUser => authUser ? <AuthenticatedUser/> : <NonAuthenticatedUser/> }
+        </AuthUserContext.Consumer>
+    </AppBar>
+    
+)
 
 const AuthenticatedUser = () => {
     return (
