@@ -5,10 +5,6 @@ import { withFireBase } from '../components/Firebase';
 import { TextField, Button } from '@material-ui/core';
 import { compose } from 'recompose';
 
-//embed on SignIn page w/ redirect link
-//this page shouldn't have a navigation route link
-//should only show this form if person hasn't prev
-//created an account
 const SignUpPage = () => {
 
     return (
