@@ -10,12 +10,12 @@ import useStyles from './styles';
 const Reservation = ({reservation, setCurrentId}) => {
     const dispatch = useDispatch();
     const classes = useStyles();
-
+    
     return (
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'}/>
             <CardContent className={classes.overlay2}>
-                <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(reservation._id)}><MoreHorizIcon fontSize="default" /></Button>
+                <Button style={{ color: 'white' }} size="small" onClick={() => setCurrentId(reservation._id)}><MoreHorizIcon fontSize="medium" /></Button>
             </CardContent>
             <CardContent className={classes.overlay}>
                 <Typography variant="h6">{reservation.firstName + ' ' + reservation.lastName}</Typography>
