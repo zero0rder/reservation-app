@@ -21,11 +21,11 @@ const HomePage = () => {
             <Grow in>
                 <Container className={classes.contentContainer}>
                     <Grid container justifyContent="space-between" alignItems="stretch" spacing={3}>
-                        <Grid item xs={12} sm={6}>
-                            <Reservations setCurrentId={setCurrentId}/>
+                        <Grid item className={classes.formGrid}>
+                            <Form currentId={currentId} setCurrentId={setCurrentId}/>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Form currentId={currentId} setCurrentId={setCurrentId}/>
+                            <Reservations setCurrentId={setCurrentId}/>
                         </Grid>
                     </Grid>
                 </Container>

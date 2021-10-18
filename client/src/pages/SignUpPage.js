@@ -4,12 +4,13 @@ import * as ROUTES from '../constants/routes';
 import { withFireBase } from '../components/Firebase';
 import { TextField, Button } from '@material-ui/core';
 import { compose } from 'recompose';
+import useStyles from '../styles';
 
 const SignUpPage = () => {
-
+    const classes = useStyles();
     return (
         <>
-            <div>Sign Up</div>
+            <div className={classes.signUpHeader}>Sign Up</div>
             <SignUpForm /> 
         </>
     )
@@ -19,6 +20,7 @@ const SignUpFormBase = ({firebase, history}) => {
     const [signUpFormData, setSignUpFormData] = useState({userName: '', email: '', password1: '', password2: '', error: null})
     const { userName, email, password1, password2, error } = signUpFormData;
     const isInvalid = password1 !== password2 || password1 === '' || userName === '' || email === '';
+    const classes = useStyles();
 
     const onSubmit = (e) => {
         firebase.getCreateUserWithEmailAndPassword(email, password1)
@@ -34,7 +36,7 @@ const SignUpFormBase = ({firebase, history}) => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className={classes.signUpForm} onSubmit={onSubmit}>
             <TextField 
             name="username"
             value={userName}

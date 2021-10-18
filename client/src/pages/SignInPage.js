@@ -5,12 +5,13 @@ import { withFireBase } from '../components/Firebase';
 import { TextField, Button } from '@material-ui/core';
 import { compose } from 'recompose';
 import { SignUpLink } from "./SignUpPage";
+import useStyles from '../styles';
 
 const SignInPage = () => {
-
+    const classes = useStyles();
     return (
         <>
-            <div>Sign In Page</div>
+            <div className={classes.signInHeader}>Sign In Page</div>
             <SignInForm/>
             <SignUpLink/>
         </>
@@ -22,6 +23,7 @@ const SignInFormBase = ({firebase, history}) => {
     const [signInFormData, setSignInFormData] = useState({email: '', password: '', error: null});
     const { email, password, error } = signInFormData;
     const isInvalid = email === '' || password === '';
+    const classes = useStyles();
 
     const onSubmit = (e) => {
         firebase.getSignInWithEmailAndPassword(email, password)
@@ -37,7 +39,7 @@ const SignInFormBase = ({firebase, history}) => {
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className={classes.signInForm} onSubmit={onSubmit}>
             <TextField 
             name="email"
             value={email}
