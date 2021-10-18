@@ -9,7 +9,7 @@ import useStyles from './styles';
 const Navigation = () => {
     const classes = useStyles();
     return (
-        <AppBar position="static" color="inherit" style={classes.header}>
+        <AppBar position="static" className={classes.header}>
             <AuthUserContext.Consumer>
                 { authUser => authUser ? <AuthenticatedUser/> : <NonAuthenticatedUser/> }
             </AuthUserContext.Consumer>

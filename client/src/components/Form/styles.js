@@ -5,6 +5,12 @@ export default makeStyles((theme)=>({
         '& .MuiTextField-root': {
             margin: theme.spacing(1),
           },
+
+          '& h6': {
+            width: '100%',
+            textAlign: 'center',
+          },
+
     },
     paper: {
         padding: theme.spacing(2),
