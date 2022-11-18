@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { ReservationMap } from './components/maps'
 import { AutoInput } from './components/autoInput'
+import { Navbar } from './components/layout/navbar'
 import { GeolocationPosition } from './interfaces'
 import { Row } from 'antd'
-import './App.css'
 
 interface Props {}
 
@@ -18,6 +18,7 @@ const App: React.FC<Props> = () => {
 
   return (
     <Row className='app'>
+        <Navbar/>
         <ReservationMap geostate={geolocation} /> 
         <AutoInput setLocation={setGeolocation} />
     </Row>
