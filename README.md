@@ -1,5 +1,7 @@
 # Reservation App
 
+Book dining reservations in your area
+
 ## Introduction
 
 This is a code repository for the reservation application

@@ -71,28 +71,28 @@ color: #fff;
 font-weight: normal;
 }
 
-div.confirm-name {
+span.confirm-name {
 display: block;
 font-size: 2rem;
 padding-top: 1rem;
 }
 
-div.confirm-guests,
-div.confirm-addy {
+span.confirm-guests,
+span.confirm-addy {
 font-size: 1rem;
 }
 
-div.confirm-place {
+span.confirm-place {
 display: block;
 font-size: 1.5rem;
 }
 
-div.confirm-date {
+span.confirm-date {
 display: block;
 font-size: 1rem;
 }
 
-div.confirm-time {
+span.confirm-time {
 font-size: 1rem;
 font-weight: bold;
 }
