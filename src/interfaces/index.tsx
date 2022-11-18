@@ -4,6 +4,7 @@ type TimeOpts = { day: number, time: string, hours: number, minutes: number }
 
 export interface PlaceProps {
     formatted_phone_number: string;
+    formatted_address: string;
     geometry: {
         location: { lat: Function; lng: Function; },
         viewport: { south: number; west: number; north: number; east: number; }
@@ -41,4 +42,12 @@ type GeolocationCoordinates = {
 export interface GeolocationPosition {
     coords: GeolocationCoordinates;
     timestamp: number;
+}
+
+export interface ReservationConfirm {
+    date?: any;
+    name?: string;
+    phone?: number;
+    time?: string;
+    guests?: number;
 }
