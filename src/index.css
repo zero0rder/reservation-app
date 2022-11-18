@@ -1,0 +1,98 @@
+.app {
+justify-content: center;
+align-items: center;
+}
+
+.navbar {
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+font-size: 1.25rem;
+font-weight: bold;
+}
+
+ul.ant-rate > li {
+margin: 0.5rem !important;
+}
+
+.ant-layout-header {
+color: #fff !important;
+}
+
+.place-card {
+text-align: center;
+margin: 1rem 0 !important;
+}
+
+.place-card .ant-card-body {
+position: relative;
+overflow: hidden;
+}
+
+.place-card .ant-drawer-content-wrapper {
+width: 100% !important;
+}
+
+.ant-drawer-body form {
+text-align: left;
+}
+
+.ant-drawer-body form div.ant-form-item:last-child {
+text-align: center;
+margin: 0;
+}
+
+button.app-btn {
+height: 2.5rem;
+border-radius: 50px;
+}
+
+div.ant-drawer-title {
+font-size: 0.9rem !important;
+}
+
+div.confirm-card {
+margin: 2rem 0;
+}
+
+div.confirm-card .ant-card-body {
+padding-top: 0;
+}
+
+div.confirm-card h1.ant-typography {
+text-align: center;
+}
+
+div.confirm-card h1.ant-typography > span {
+padding: 0 1rem;
+background-color: #001529;
+color: #fff;
+font-weight: normal;
+}
+
+span.confirm-name {
+display: block;
+font-size: 2rem;
+padding-top: 1rem;
+}
+
+span.confirm-guests,
+span.confirm-addy {
+font-size: 1rem;
+}
+
+span.confirm-place {
+display: block;
+font-size: 1.5rem;
+}
+
+span.confirm-date {
+display: block;
+font-size: 1rem;
+}
+
+span.confirm-time {
+font-size: 1rem;
+font-weight: bold;
+}
