@@ -23,7 +23,7 @@ export const Success: React.FC<SuccessProps> = ({ user, place }) => {
                 unoptimized/>
             </div>
             <h1 className='font-bold text-2xl'>Reservation Successful!</h1>
-            <p className='px-8'>Congrats {user.name}, your reservation to <span className='underline'>{place.name}</span> has been submitted for {user.date?.toLocaleDateString()}.</p>
+            <p className='px-8'>Congrats {user.name}, your reservation for {user.guests} guests to <span className='underline'>{place.name}</span> has been submitted for {user.date?.toLocaleDateString()} @ {user.time}.</p>
             <div>A confirmation text has been sent to: <span className='font-bold'>{user.phone}</span></div>
             <div className='flex justify-center items-center flex-col italic text-sm'>
                 <span>{place.name}</span>

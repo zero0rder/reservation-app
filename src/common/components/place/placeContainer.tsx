@@ -26,12 +26,12 @@ export const PlaceContainer: React.FC<PlaceContainerProps> = ({ details }) => {
             variants={placeVariants}
             initial='hidden'
             whileInView='show'
-            className='flex w-full h-full absolute left-0 top-0 divide-x py-4'>
+            className='flex flex-col md:flex-row w-full h-full relative md:absolute left-0 top-0 divide-y md:divide-y-0 md:divide-x py-4'>
             <motion.div
             variants={slideIn('left', 'tween', 0.2, 1)}
             initial='hidden'
             whileInView='show'
-            className='w-6/12 flex flex-col justify-center items-center px-4'>
+            className='w-full md:w-6/12 flex flex-col justify-center items-center pb-4 md:pb-0 px-4'>                
                 <ReservationMap dimensions={{w: 250, h: 190}} geostate={location}/>
                 <PlaceCard details={details}/>
             </motion.div>
@@ -39,7 +39,7 @@ export const PlaceContainer: React.FC<PlaceContainerProps> = ({ details }) => {
             variants={slideIn('right', 'tween', 0.2, 1)} 
             initial='hidden'
             whileInView='show'
-            className='w-6/12 flex justify-center items-center px-4'>
+            className='w-full md:w-6/12 flex justify-center items-center pt-4 md:pt-0 px-4'>
                 <PlaceForm place={placeDetails} />
             </motion.div>
         </motion.section>

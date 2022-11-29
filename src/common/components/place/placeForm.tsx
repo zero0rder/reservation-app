@@ -16,14 +16,15 @@ export type FormState = {
     guests: string;
     phone: string;
     date: Date | null;
+    time: string;
 }
 
 export const PlaceForm: React.FC<PlaceFormProps> = ({ place }) => {
-    const [formState, setFormState] = useState<FormState>({name: '', guests: '1', phone: '', date: new Date()})
+    const [formState, setFormState] = useState<FormState>({name: '', guests: '1', phone: '', date: new Date(), time: '5:00 PM'})
     const [isValid, setIsValid] = useState<boolean>(false)
     const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         e.preventDefault()
-        //-> check form validation
+        //todo: -> check form validation
         setIsValid(true) 
     }
 
@@ -47,7 +48,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place }) => {
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
-                    <option>6</option>
+                    <option>6+</option>
                 </select>
             </label>
             <label htmlFor='phone'>
@@ -60,11 +61,25 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place }) => {
             <label htmlFor='date'>
                 <span className='block font-medium pb-1'>Date</span>
                 <DatePicker name='date' id='date' 
-                // onSelect={}
+                //todo: -> onSelect={} close picker
                 selected={formState.date}
                 onChange={d => setFormState({...formState, date: d})} 
                 className={`${styles.inputTheme} w-48 text-sm`}
                 autoComplete='off'/>
+            </label>
+            <label htmlFor='time'>
+                <span className='block font-medium pb-1'>Time</span>
+                <select name='time' id='time' 
+                className={`${styles.inputTheme}`}
+                value={formState.time}
+                onChange={e => setFormState({...formState, time: e.target.value})}>
+                    <option>5:00 PM</option>
+                    <option>6:00 PM</option>
+                    <option>7:00 PM</option>
+                    <option>8:00 PM</option>
+                    <option>9:00 PM</option>
+                    <option>10:00 PM</option>
+                </select>
             </label>
             <div className='text-center'>
                 <button type='submit' onClick={e => handleSubmit(e)} 
