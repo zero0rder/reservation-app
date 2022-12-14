@@ -2,7 +2,6 @@ import React, { useCallback, useEffect } from 'react'
 import { AutoInputProps } from '../../interfaces'
 import { motion } from 'framer-motion'
 import { inputVariants } from '../../../utils/motion'
-import styles from '../../../utils/styles'
 
 export const AutoInput: React.FC<AutoInputProps> = ({ setLocation, setPlace }) => {
     let autocomplete: any
@@ -29,7 +28,7 @@ export const AutoInput: React.FC<AutoInputProps> = ({ setLocation, setPlace }) =
         })}
     }
 
-    useEffect(() => initAutocomplete(), [])
+    useEffect(() => initAutocomplete(), [initAutocomplete])
 
     return (
         <motion.div
@@ -37,7 +36,7 @@ export const AutoInput: React.FC<AutoInputProps> = ({ setLocation, setPlace }) =
             initial='hidden'
             whileInView='show'>
             <input id='autocomplete' 
-            className={`${styles.inputTheme} w-60 text-sm`}/>
+            className={`border p-1 rounded-md border-slate-200 hover:border-indigo-300 focus:border-indigo-300 focus:outline-none w-60 text-sm`}/>
         </motion.div>
     )
 }

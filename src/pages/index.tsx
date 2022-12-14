@@ -1,4 +1,3 @@
-import Script from 'next/script'
 import React, { useState, useEffect } from 'react'
 import { AutoInput } from '@components/autocomplete/autoInput'
 import { ReservationMap } from '@components/maps'
@@ -14,13 +13,13 @@ export default function Home() {
   useEffect(() => {navigator?.geolocation?.getCurrentPosition(successCb, errorCb)}, [])
   
   return (
-    <div className='flex justify-center items-start flex-1 md:px-7 w-full relative'>
-      <main className='flex justify-center items-center w-full flex-col'>
+    <div className='relative flex items-start justify-center flex-1 w-full md:px-7'>
+      <main className='flex flex-col items-center justify-center w-full'>
         { place 
           ? <>
               <span 
                 onClick={() => setPlace(null)}
-                className='absolute left-0 ml-4 cursor-pointer z-10 -top-10 flex justify-center items-center'>
+                className='absolute left-0 z-10 flex items-center justify-center ml-4 text-gray-200 cursor-pointer -top-10'>
                 <FaRegArrowAltCircleLeft />
                 <span className='pl-1'>Back</span>
               </span>
@@ -32,7 +31,6 @@ export default function Home() {
             </> 
         }
       </main>
-      <Script src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_API_KEY}&libraries=places`} strategy='beforeInteractive'/>
     </div>
   )
 }
