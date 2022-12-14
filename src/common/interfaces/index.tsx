@@ -18,15 +18,17 @@ export interface PlaceProps {
     };
     rating: number;
     user_ratings_total: number;
-    html_attributions: []
+    html_attributions: [];
 }
 
 export interface AutoInputProps {
-    setLocation: React.Dispatch<React.SetStateAction<{lat: number, lng: number, name?: string} | null>>
+    setLocation: React.Dispatch<React.SetStateAction<{lat: number, lng: number} | null>>;
+    setPlace: React.Dispatch<React.SetStateAction<PlaceProps | null>>;
 }
 
 export interface MapProps {
     geostate: { lat: number, lng: number, name?: string } | null;
+    dimensions?: { w: number, h: number }
 }
 
 type GeolocationCoordinates = {
