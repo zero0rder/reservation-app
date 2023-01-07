@@ -1,34 +1,49 @@
 import React from 'react'
-import Image from 'next/image'
-import { MapProps } from '../../interfaces'
-import { motion } from 'framer-motion'
-import { mapVariants } from '../../../utils/motion'
+import { MapProps, PlaceProps } from '../../interfaces'
+import { GoogleMap, InfoWindow } from '@react-google-maps/api'
 
-export const ReservationMap: React.FC<MapProps> = ({ geostate, dimensions }) => {
-    const image = `https://maps.googleapis.com/maps/api/staticmap?zoom=13&size=${dimensions ? dimensions.w : '600'}x${dimensions ? dimensions.h : '300'}&maptype=roadmap&markers=color:red%7C${geostate?.lat},${geostate?.lng}&key=${process.env.NEXT_PUBLIC_API_KEY}`
-    const imgLoader = (src: any) => image
+export const ReservationMap: React.FC<MapProps> = ({ geostate, place, setPlace }) => {
+    const handleClose = () => setPlace(() => null)
+    const mapStyles = {
+        height: "100%",
+        width: "100%",
+        filter: place ? 'none' : 'grayscale(1) contrast(1.2) opacity(0.4)'
+    }
+    
     return (
-        <section className='m-8 text-center'>
-            { geostate !== null 
-            ? <motion.div
-                variants={mapVariants}
-                initial='hidden'
-                whileInView='show'
-                whileHover={{ 
-                    scale: 1.025,
-                    transition: { duration: 0.2 }
-                }}>
-                <Image 
-                className='m-auto border border-gray-300 rounded-lg hover:border-indigo-300'
-                src={image} 
-                loader={imgLoader} 
-                alt='map'
-                priority
-                width={dimensions ? dimensions.w : 600}
-                height={dimensions ? dimensions.h : 300}
-                unoptimized />   
-             </motion.div>
-            : <div>Loading...</div>}
+        <>
+            <GoogleMap
+                mapContainerStyle={mapStyles}
+                zoom={15}
+                center={geostate}>
+                {
+                    place && (
+                        <InfoWindow
+                            position={geostate}
+                            onCloseClick={() => handleClose()}
+                            onLoad={(e: google.maps.InfoWindow) => console.log('loaded', e)}
+                            zIndex={999999}>
+                           <PlaceContent place={place}/>
+                        </InfoWindow>
+                    )
+                }
+            </GoogleMap>
+        </>
+    )
+}
+
+interface PlaceContentProps {
+    place: PlaceProps
+}
+ 
+const PlaceContent: React.FC<PlaceContentProps> = ({place}) => {
+    return (  
+        <section className='flex flex-col items-center justify-center gap-1 px-4 pt-4 faker'>
+            <h1 className='font-medium'>{place.name}</h1>
+            <span className='font-medium'>⭐ {place.rating}</span>
+            <p>{place.formatted_address}</p>
+            <span>{place.formatted_phone_number}</span>
+            <button className='p-2 text-[0.65rem] mt-1 font-medium border rounded bg-blue-600 hover:bg-blue-400 border-white text-white'>Reserve Now</button>
         </section>
     )
 }

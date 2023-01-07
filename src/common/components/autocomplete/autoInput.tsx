@@ -34,9 +34,10 @@ export const AutoInput: React.FC<AutoInputProps> = ({ setLocation, setPlace }) =
         <motion.div
             variants={inputVariants}
             initial='hidden'
-            whileInView='show'>
+            whileInView='show'
+            className='w-72'>
             <input id='autocomplete' 
-            className={`border p-1 rounded-md border-slate-200 hover:border-indigo-300 focus:border-indigo-300 focus:outline-none w-60 text-sm`}/>
+            className={`absolute border p-3 w-72 rounded-md border-slate-200 hover:border-indigo-300 focus:border-indigo-300 focus:outline-none text-sm shadow-2xl shadow-stone-900`}/>
         </motion.div>
     )
 }
