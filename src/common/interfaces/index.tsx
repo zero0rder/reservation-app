@@ -22,13 +22,14 @@ export interface PlaceProps {
 }
 
 export interface AutoInputProps {
-    setLocation: React.Dispatch<React.SetStateAction<{lat: number, lng: number} | null>>;
+    setLocation: React.Dispatch<React.SetStateAction<google.maps.LatLngLiteral>>;
     setPlace: React.Dispatch<React.SetStateAction<PlaceProps | null>>;
 }
 
 export interface MapProps {
-    geostate: { lat: number, lng: number, name?: string } | null;
-    dimensions?: { w: number, h: number }
+    geostate: { lat: number, lng: number };
+    place: PlaceProps | null;
+    setPlace: React.Dispatch<React.SetStateAction<PlaceProps | null>>;
 }
 
 type GeolocationCoordinates = {
