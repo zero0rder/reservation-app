@@ -25,7 +25,7 @@ export const ReservationMap: React.FC<MapProps> = ({ geostate, place, setPlace }
                     <InfoWindow
                         position={geostate}
                         onCloseClick={() => handleClose()}
-                        onLoad={(e: google.maps.InfoWindow) => console.log('infoWindow', e)}
+                        // onLoad={(e: google.maps.InfoWindow) => console.log('infoWindow', e)}
                         zIndex={9999}>
                         <PlaceContent place={place} />
                     </InfoWindow>
