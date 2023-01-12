@@ -1,31 +1,31 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { AutoInputProps } from '../../interfaces'
 import { motion } from 'framer-motion'
 import { inputVariants } from '../../../utils/motion'
 
 export const AutoInput: React.FC<AutoInputProps> = ({ setLocation, setPlace }) => {
-    let autocomplete: any
+    const autocompleteRef = useRef<google.maps.places.Autocomplete>()
     const initAutocomplete = useCallback(() => {
-        autocomplete = new google.maps.places.Autocomplete(
+        autocompleteRef.current = new google.maps.places.Autocomplete(
         document.getElementById('autocomplete') as HTMLInputElement, 
         {   types: ['restaurant', 'food'],
             fields: ['name', 'place_id', 'geometry', 'rating', 'formatted_phone_number', 'opening_hours', 'user_ratings_total', 'formatted_address'],
             componentRestrictions: {country: ['US']}
         })
 
-        autocomplete.addListener('place_changed', onPlaceChanged)
+        autocompleteRef.current.addListener('place_changed', onPlaceChanged)
 
-    }, [autocomplete])
+    }, [])
 
     const onPlaceChanged = () => {
-        const details = autocomplete.getPlace()
-            
-        if(details.geometry){
-        setPlace(() => details)
-        setLocation({
-            lat: details?.geometry.location.lat(), 
-            lng: details?.geometry.location.lng()
-        })}
+        const details = autocompleteRef.current?.getPlace() as any
+        if(details?.geometry){
+            setPlace(() => details)
+            setLocation({
+                lat: details.geometry.location.lat(), 
+                lng: details.geometry.location.lng()
+            })
+        }
     }
 
     useEffect(() => initAutocomplete(), [initAutocomplete])
