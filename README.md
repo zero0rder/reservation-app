@@ -1,6 +1,6 @@
 # Reservation App
 
-Book dining reservations in your area
+Book dining reservations in your area with the help of Google Maps! 🌎 🌮 🍲
 
 ## Quick Start
 
