@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
 import DatePicker from 'react-datepicker'
 import { Success } from './success'
+import { UseValidation } from '../../hooks/useValidation'
 import 'react-datepicker/dist/react-datepicker.css'
+
 export interface PlaceFormProps {
     place: {
         name: string | undefined;
@@ -20,21 +22,24 @@ export type FormState = {
 
 export const PlaceForm: React.FC<PlaceFormProps> = ({ place }) => {
     const [formState, setFormState] = useState<FormState>({name: '', guests: '1', phone: '', date: new Date(), time: '5:00 PM'})
-    const [isValid, setIsValid] = useState<boolean>(false)
-    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const [isReserved, setIsReserved] = useState<boolean>(false)
+    const { validate, validationProps } = UseValidation()
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        //todo: -> check form validation
-        setIsValid(true) 
+
+        if(validate(formState.name, formState.phone) === 'valid')
+            setIsReserved(true)
+        
     }
 
     return (
-        isValid 
+        isReserved 
         ? <Success user={formState} place={place}/>
-        : <form className='flex flex-col w-3/4 gap-3 p-4 space-y-4'>
+        : <form onSubmit={e => handleSubmit(e)} className='flex flex-col w-3/4 gap-3 p-4 space-y-4'>
             <label className='w-3/4 m-auto' htmlFor='name'>
                 <span className='block pb-1 font-medium'>Name</span>
                 <input name='name' id='name' 
-                className='w-full p-1 text-sm border rounded-md border-slate-200 hover:border-indigo-300 focus:border-indigo-300 focus:outline-none' value={formState.name} 
+                className={`w-full p-1 text-sm border rounded-md ${validationProps.name === 'valid' ? 'border-slate-200' : validationProps.name === 'invalid' ? 'border-red-600' : 'border-slate-200'} hover:border-indigo-300 focus:border-indigo-300 focus:outline-none`} value={formState.name} 
                 onChange={e => setFormState({...formState, name: e.target.value})}/>
             </label>
             <div className='flex items-center justify-center w-3/4 gap-2 m-auto'>
@@ -55,7 +60,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place }) => {
                     <span className='block pb-1 font-medium'>Phone</span>
                     <input name='phone' type='tel' id='phone' 
                     value={formState.phone}
-                    className='w-full p-1 text-sm border rounded-md border-slate-200 hover:border-indigo-300 focus:border-indigo-300 focus:outline-none'
+                    className={`w-full p-1 text-sm border rounded-md ${validationProps.phone === 'valid' ? 'border-slate-200' : validationProps.phone === 'invalid' ? 'border-red-600' : 'border-slate-200'} hover:border-indigo-300 focus:border-indigo-300 focus:outline-none`}
                     onChange={e => setFormState({...formState, phone: e.target.value})}/>
                 </label>
             </div>
@@ -85,8 +90,11 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place }) => {
                 </label>
             </div>
             <div className='text-center'>
-                <button type='submit' onClick={e => handleSubmit(e)} 
-                className='w-2/6 p-2 mt-4 text-white bg-blue-600 border border-blue-600 rounded hover:bg-blue-400'>Submit</button>
+                <button type='submit' className='w-2/6 p-2 mt-4 text-white bg-blue-600 border border-blue-600 rounded hover:bg-blue-400'>Submit</button>
+            </div>
+            <div className='p-4 min-h-[5rem]'>
+                {validationProps.name === 'invalid' && <div className='text-red-600'>please enter name</div>}
+                {validationProps.phone === 'invalid' && <div className='text-red-600'>please enter valid phone number</div>}
             </div>
         </form>
     )
