@@ -9,7 +9,7 @@ export const ReservationMap: React.FC<MapProps> = ({ geostate, place, setPlace }
     const styles = {
         height: "100%",
         width: "100%",
-        // filter: place ? 'none' : 'grayscale(1) contrast(1.2) opacity(0.4)',
+        filter: place ? 'none' : 'grayscale(1) contrast(1.2) opacity(1)',
         transition: '0.5s all',
         zIndex: '2',
         transform: isShown ? 'translateX(0)' : 'translateX(-95%)'
@@ -25,7 +25,7 @@ export const ReservationMap: React.FC<MapProps> = ({ geostate, place, setPlace }
                     <InfoWindow
                         position={geostate}
                         onCloseClick={() => handleClose()}
-                        onLoad={(e: google.maps.InfoWindow) => console.log('loaded', e)}
+                        onLoad={(e: google.maps.InfoWindow) => console.log('infoWindow', e)}
                         zIndex={9999}>
                         <PlaceContent place={place} />
                     </InfoWindow>

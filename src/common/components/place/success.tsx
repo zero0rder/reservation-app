@@ -14,7 +14,7 @@ interface SuccessProps {
 
 export const Success: React.FC<SuccessProps> = ({ user, place }) => {
     return (
-        <section className='space-y-6 text-center'>
+        <section className='mx-8 space-y-6 text-center md:mx-16'>
             <div>
                 <Image src={successImg}
                 alt='success' 
@@ -22,10 +22,10 @@ export const Success: React.FC<SuccessProps> = ({ user, place }) => {
                 className='m-auto'
                 unoptimized/>
             </div>
-            <h1 className='font-bold text-2xl'>Reservation Successful!</h1>
+            <h1 className='text-2xl font-bold'>Reservation Successful!</h1>
             <p className='px-8'>Congrats {user.name}, your reservation for {user.guests} guests to <span className='underline'>{place.name}</span> has been submitted for {user.date?.toLocaleDateString()} @ {user.time}.</p>
             <div>A confirmation text has been sent to: <span className='font-bold'>{user.phone}</span></div>
-            <div className='flex justify-center items-center flex-col italic text-sm'>
+            <div className='flex flex-col items-center justify-center text-sm italic'>
                 <span>{place.name}</span>
                 <span>{place.addy}</span>
                 <span>{place.phone}</span>

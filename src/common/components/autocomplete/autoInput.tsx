@@ -18,7 +18,7 @@ export const AutoInput: React.FC<AutoInputProps> = ({ setLocation, setPlace }) =
     }, [autocomplete])
 
     const onPlaceChanged = () => {
-        let details = autocomplete.getPlace()
+        const details = autocomplete.getPlace()
             
         if(details.geometry){
         setPlace(() => details)
@@ -37,7 +37,7 @@ export const AutoInput: React.FC<AutoInputProps> = ({ setLocation, setPlace }) =
             whileInView='show'
             className='z-10 w-72'>
             <input id='autocomplete' 
-            className={`absolute border p-3 w-72 rounded-md border-slate-200 hover:border-indigo-300 focus:border-indigo-300 focus:outline-none text-sm shadow-2xl shadow-stone-900`}/>
+            className={`absolute border-2 p-3 w-72 rounded-md border-amber-600 hover:border-green-500 focus:border-green-500 focus:outline-none text-sm shadow-2xl shadow-amber-500`}/>
         </motion.div>
     )
 }
