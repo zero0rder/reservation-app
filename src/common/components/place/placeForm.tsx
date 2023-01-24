@@ -9,7 +9,8 @@ export interface PlaceFormProps {
         name: string | undefined;
         addy: string | undefined;
         phone: string | undefined;
-    };
+    },
+    showForm: boolean;
 }
 
 export type FormState = {
@@ -20,7 +21,7 @@ export type FormState = {
     time: string;
 }
 
-export const PlaceForm: React.FC<PlaceFormProps> = ({ place }) => {
+export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
     const [formState, setFormState] = useState<FormState>({name: '', guests: '1', phone: '', date: new Date(), time: '5:00 PM'})
     const [isReserved, setIsReserved] = useState<boolean>(false)
     const { validate, validationProps } = UseValidation()
@@ -35,7 +36,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place }) => {
     return (
         isReserved 
         ? <Success user={formState} place={place}/>
-        : <form onSubmit={e => handleSubmit(e)} className='flex flex-col w-3/4 gap-3 p-4 space-y-4'>
+        : <form onSubmit={e => handleSubmit(e)} className={`${!showForm ? 'flex' : 'hidden'} flex-col w-3/4 gap-3 p-4 space-y-4`}>
             <label className='w-3/4 m-auto' htmlFor='name'>
                 <span className='block pb-1 font-medium'>Name</span>
                 <input name='name' id='name' 

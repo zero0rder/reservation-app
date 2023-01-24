@@ -25,8 +25,8 @@ export default function Home() {
           <div className="absolute inset-0 bg-gray-300">
             <ReservationMap geostate={geolocation} place={place} setPlace={setPlace}/>
             <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full'>
-              <button onClick={() => setIsShown(() => true)} className='absolute top-0 p-2 my-2 text-white bg-blue-600 border border-blue-600 rounded left-8 md:left-16 hover:bg-blue-400'>Back To Map</button>
-              <PlaceForm place={formProps}/>
+              <button onClick={() => setIsShown(() => true)} className={`${!isShown ? 'block' : 'hidden'} absolute top-0 p-2 my-2 text-white bg-blue-600 border border-blue-600 rounded left-10 md:left-20 hover:bg-blue-400`}>Back To Map</button>
+              <PlaceForm showForm={isShown} place={formProps}/>
             </div>
           </div>
           {!place && <AutoInput setPlace={setPlace} setLocation={setGeolocation}/>}
