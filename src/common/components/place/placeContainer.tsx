@@ -1,5 +1,5 @@
 import React from 'react'
-import { PlaceForm } from './placeForm'
+// import { PlaceForm } from './placeForm'
 import { PlaceCard } from './placeCard'
 // import { ReservationMap } from '../maps'
 import { PlaceProps } from '../../interfaces'
@@ -11,15 +11,15 @@ interface PlaceContainerProps {
 }
 
 export const PlaceContainer: React.FC<PlaceContainerProps> = ({ details }) => {
-    const location = {
-        lat: details?.geometry.location.lat(),
-        lng: details?.geometry.location.lng()
-    }
-    const placeDetails = {
-        name: details?.name, 
-        addy: details?.formatted_address, 
-        phone: details?.formatted_phone_number
-    }
+    // const location = {
+    //     lat: details?.geometry.location.lat(),
+    //     lng: details?.geometry.location.lng()
+    // }
+    // const placeDetails = {
+    //     name: details?.name, 
+    //     addy: details?.formatted_address, 
+    //     phone: details?.formatted_phone_number
+    // }
 
     return (
         <motion.section 
@@ -40,7 +40,6 @@ export const PlaceContainer: React.FC<PlaceContainerProps> = ({ details }) => {
             initial='hidden'
             whileInView='show'
             className='flex items-center justify-center w-full px-4 pt-4 md:w-6/12 md:pt-0'>
-                <PlaceForm place={placeDetails} />
             </motion.div>
         </motion.section>
     )
