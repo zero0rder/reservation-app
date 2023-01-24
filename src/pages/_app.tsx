@@ -8,8 +8,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>Reservation Hub</title>
-        <meta name="description" content="Dindin App" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Reservation Hub" />
       </Head>
       <AppHeader/>
       <Component {...pageProps} />

@@ -15,9 +15,9 @@ export const AutoInput: React.FC<AutoInputProps> = ({ setLocation, setPlace }) =
 
         autocompleteRef.current.addListener('place_changed', onPlaceChanged)
 
-    }, [])
+    }, [onPlaceChanged])
 
-    const onPlaceChanged = () => {
+    function onPlaceChanged(){
         const details = autocompleteRef.current?.getPlace() as any
         if(details?.geometry){
             setPlace(() => details)
