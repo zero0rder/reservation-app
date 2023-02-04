@@ -1,37 +1,57 @@
-import React, { useState, useEffect } from 'react'
-import { AutoInput } from '@components/autocomplete/autoInput'
-import { ReservationMap } from '@components/maps'
-import { PlaceForm } from '@components/place/placeForm'
-import { GeolocationPosition, PlaceProps } from '../common/interfaces'
-import { MapContext } from '../common/context'
+import React, { useState, useEffect } from "react";
+import { AutoInput } from "@components/autocomplete/autoInput";
+import { ReservationMap } from "@components/maps";
+import { PlaceForm } from "@components/place/placeForm";
+import { GeolocationPosition, PlaceProps } from "../common/interfaces";
+import { MapContext } from "../common/context";
 
 export default function Home() {
-  const [geolocation, setGeolocation] = useState<google.maps.LatLngLiteral>({lat: 0, lng: 0})
-  const [place, setPlace] = useState<PlaceProps | null>(null)
-  const [isShown, setIsShown] = useState<boolean>(true)
-  const successCb = (pos: GeolocationPosition) => setGeolocation({ lat: pos?.coords.latitude, lng: pos?.coords.longitude })
-  const errorCb = (error: GeolocationPositionError) => console.log('error fetching position', error)
-  useEffect(() => {navigator?.geolocation?.getCurrentPosition(successCb, errorCb)}, [])
+  const [geolocation, setGeolocation] = useState<google.maps.LatLngLiteral>({
+    lat: 0,
+    lng: 0,
+  });
+  const [place, setPlace] = useState<PlaceProps | null>(null);
+  const [isShown, setIsShown] = useState<boolean>(true);
+  const successCb = (pos: GeolocationPosition) =>
+    setGeolocation({ lat: pos?.coords.latitude, lng: pos?.coords.longitude });
+  const errorCb = (error: GeolocationPositionError) =>
+    console.log("error fetching position", error);
+  useEffect(() => {
+    navigator?.geolocation?.getCurrentPosition(successCb, errorCb);
+  }, []);
   const formProps = {
-    name: place?.name, 
-    addy: place?.formatted_address, 
-    phone: place?.formatted_phone_number
-  }
+    name: place?.name,
+    addy: place?.formatted_address,
+    phone: place?.formatted_phone_number,
+  };
 
   return (
-    <MapContext.Provider value={{isShown, setIsShown}}>
-      <div className='relative flex items-start justify-center flex-1 w-full'>
+    <MapContext.Provider value={{ isShown, setIsShown }}>
+      <div className="relative flex items-start justify-center flex-1 w-full">
         <section className="relative flex items-center justify-center w-full h-full text-gray-600">
           <div className="absolute inset-0 bg-gray-300">
-            <ReservationMap geostate={geolocation} place={place} setPlace={setPlace}/>
-            <div className='absolute top-0 left-0 flex items-center justify-center w-full h-full'>
-              <button onClick={() => setIsShown(() => true)} className={`${!isShown ? 'block' : 'hidden'} absolute top-0 p-2 my-2 text-white bg-blue-600 border border-blue-600 rounded left-10 md:left-20 hover:bg-blue-400`}>Back To Map</button>
-              <PlaceForm showForm={isShown} place={formProps}/>
+            <ReservationMap
+              geostate={geolocation}
+              place={place}
+              setPlace={setPlace}
+            />
+            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
+              <button
+                onClick={() => setIsShown(() => true)}
+                className={`${
+                  !isShown ? "block" : "hidden"
+                } absolute top-4 p-2 text-white bg-black rounded left-8 hover:bg-red-700`}
+              >
+                Show Map
+              </button>
+              <PlaceForm showForm={isShown} place={formProps} />
             </div>
           </div>
-          {!place && <AutoInput setPlace={setPlace} setLocation={setGeolocation}/>}
+          {!place && (
+            <AutoInput setPlace={setPlace} setLocation={setGeolocation} />
+          )}
         </section>
       </div>
     </MapContext.Provider>
-  )
+  );
 }
