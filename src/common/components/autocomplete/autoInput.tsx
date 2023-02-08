@@ -8,6 +8,17 @@ export const AutoInput: React.FC<AutoInputProps> = ({
   setPlace,
 }) => {
   const autocompleteRef = useRef<google.maps.places.Autocomplete>();
+  const onPlaceChanged = useCallback(() => {
+    const details = autocompleteRef.current?.getPlace() as any;
+    if (details?.geometry) {
+      setPlace(() => details);
+      setLocation({
+        lat: details.geometry.location.lat(),
+        lng: details.geometry.location.lng(),
+      });
+    }
+  }, [setPlace, setLocation, autocompleteRef]);
+
   const initAutocomplete = useCallback(() => {
     autocompleteRef.current = new google.maps.places.Autocomplete(
       document.getElementById("autocomplete") as HTMLInputElement,
@@ -29,17 +40,6 @@ export const AutoInput: React.FC<AutoInputProps> = ({
 
     autocompleteRef.current.addListener("place_changed", onPlaceChanged);
   }, [onPlaceChanged]);
-
-  function onPlaceChanged() {
-    const details = autocompleteRef.current?.getPlace() as any;
-    if (details?.geometry) {
-      setPlace(() => details);
-      setLocation({
-        lat: details.geometry.location.lat(),
-        lng: details.geometry.location.lng(),
-      });
-    }
-  }
 
   useEffect(() => initAutocomplete(), [initAutocomplete]);
 

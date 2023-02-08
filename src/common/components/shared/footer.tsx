@@ -2,7 +2,11 @@ import React from "react";
 import { BsFacebook, BsLinkedin, BsInstagram } from "react-icons/bs";
 
 interface AppFooterProps {}
-const icons = [<BsFacebook />, <BsLinkedin />, <BsInstagram />];
+const icons = [
+  <BsFacebook key={0} />,
+  <BsLinkedin key={1} />,
+  <BsInstagram key={2} />,
+];
 const styles = {
   footer: `flex flex-col w-full h-24 px-36 py-4 text-white bg-black`,
   socialIcons: `flex items-center justify-end gap-x-3`,
