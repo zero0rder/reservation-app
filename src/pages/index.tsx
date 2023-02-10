@@ -25,11 +25,14 @@ const styles = {
   button: `px-6 py-3 font-medium text-white bg-red-700 rounded-lg hover:shadow-md hover:shadow-gray-400 hover:bg-black`,
   topSection: `flex gap-y-4`,
   bottomSection: `flex items-start justify-center flex-col w-full p-8`,
-  galleryContainer: `flex flex-wrap items-center justify-between w-full h-[34rem] gap-4 overflow-hidden`,
-  galleryItem: `h-[16rem] basis-[49%] relative`,
+  galleryContainer: `flex flex-wrap items-center justify-between w-full h-[34rem] gap-y-8 overflow-hidden`,
+  galleryItem: `h-64 basis-full md:h-72 md:basis-[48%] relative`,
   galleryItemOverlay: `flex justify-center items-center absolute w-full h-full top-0 left-0 backdrop-brightness-50 cursor-pointer`,
   galleryOverlayText: `text-5xl text-white font-medium`,
   showMoreContainer: `flex justify-center items-center w-full my-4`,
+  categoryTitleWrap: `w-full text-center border-t`,
+  categoryTitle: `py-6 text-3xl font-medium sm:py-8 sm:text-5xl`,
+  carouselWrap: `relative flex items-center w-full`,
 };
 
 const Home: NextPageWithLayout = () => {
@@ -37,13 +40,13 @@ const Home: NextPageWithLayout = () => {
   return (
     <div className={styles.pageContainer}>
       <section className={styles.topSection}>
-        <div className="relative flex items-center w-full">
+        <div className={styles.carouselWrap}>
           <Carousel />
         </div>
       </section>
       <section className={styles.bottomSection}>
-        <div className="w-full text-center border-t">
-          <p className="py-8 text-5xl font-medium">Categories</p>
+        <div className={styles.categoryTitleWrap}>
+          <p className={styles.categoryTitle}>Categories</p>
         </div>
         <motion.ul
           animate={{

@@ -9,14 +9,15 @@ const pages = [
 ];
 
 const styles = {
-  header: `z-10 flex items-center justify-between w-full px-36 py-4 text-gray-200 bg-black border-b h-[4.5rem]`,
-  navList: `flex cursor-pointer gap-x-4`,
+  header: `z-10 flex items-center justify-between flex-col sm:flex-row w-full px-12 py-2 sm:px-20 sm:py-4 text-gray-200 bg-black border-b h-[4.5rem]`,
+  navList: `text-sm sm:text-base flex cursor-pointer gap-x-4`,
   navLink: `font-medium cursor-pointer hover:text-red-700`,
+  navTitle: `text-xl font-bold sm:text-2xl`,
 };
 const AppHeader: React.FC<HeaderProps> = ({}) => {
   return (
     <header className={styles.header}>
-      <span className="text-2xl font-bold">
+      <span className={styles.navTitle}>
         Reservation <span className="text-red-700">Hub</span>
       </span>
       <div>
