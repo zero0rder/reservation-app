@@ -10,11 +10,11 @@ interface CarouselProps {
 }
 
 const styles = {
-  heroImageContainer: `relative w-full px-8`,
-  heroImage: `w-full m-auto h-[27rem]`,
-  button: `py-5 px-16 font-medium text-white bg-red-700 rounded-lg hover:shadow-md hover:shadow-gray-400 hover:bg-black`,
-  heroTextContainer: `absolute flex flex-col justify-center items-center gap-y-8 z-10 top-24 right-36`,
-  heroText: `text-7xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-white top-24 right-44`,
+  heroImageContainer: `relative flex justify-center items-center flex-wrap w-full px-8`,
+  heroImage: `w-full m-auto h-64 sm:h-[25rem] lg:h-[27rem]`,
+  button: `py-2 px-8 sm:py-3 sm:px-12 md:py-5 md:px-16 font-medium text-white bg-red-700 rounded-lg hover:shadow-md hover:shadow-gray-400 hover:bg-black`,
+  heroTextContainer: `absolute flex flex-col justify-center items-center gap-y-8 z-10`,
+  heroText: `text-4xl sm:text-6xl md:text-7xl px-12 font-bold text-center text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 to-white top-24 right-44`,
   arrows: `absolute flex w-[8%] text-[2rem] z-10`,
 };
 

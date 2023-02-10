@@ -8,10 +8,12 @@ const icons = [
   <BsInstagram key={2} />,
 ];
 const styles = {
-  footer: `flex flex-col w-full h-24 px-36 py-4 text-white bg-black`,
-  socialIcons: `flex items-center justify-end gap-x-3`,
-  contactText: `flex items-center justify-between py-4 text-sm grow`,
+  footer: `flex flex-col w-full h-24 px-12 sm:px-20 py-4 text-white bg-black`,
+  socialIcons: `flex items-center justify-center sm:justify-end gap-x-3`,
+  contactText: `flex flex-col sm:flex-row items-center justify-between py-4 text-sm grow`,
+  contactLinks: `flex gap-x-4`,
 };
+
 const AppFooter: React.FC<AppFooterProps> = () => {
   return (
     <footer className={styles.footer}>
@@ -22,7 +24,7 @@ const AppFooter: React.FC<AppFooterProps> = () => {
       </div>
       <div className={styles.contactText}>
         <span>info@reservationhub.com</span>
-        <span className="flex gap-x-4">
+        <span className={styles.contactLinks}>
           <span>Terms & Conditions</span>
           <span>Privacy Policy</span>
         </span>
