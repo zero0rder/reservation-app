@@ -5,7 +5,7 @@ interface HeaderProps {}
 const pages = [
   { text: "Home", source: "/" },
   { text: "Search", source: "/search" },
-  { text: "About", source: "/about" },
+  // { text: "About", source: "/about" },
 ];
 
 const styles = {
