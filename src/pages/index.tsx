@@ -3,13 +3,14 @@ import type { NextPageWithLayout } from "./_app";
 import DefaultLayout from "@components/layouts/default";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Banner from "@components/shared/banner";
 import PizzaImg from "../assets/pizza.jpg";
 import AsianImg from "../assets/asian.jpg";
 import AfricanImg from "../assets/african.jpg";
 import VeganImg from "../assets/vegan.jpg";
 import MexicanImg from "../assets/mexican.jpg";
 import IndianImg from "../assets/indian.jpg";
-import Carousel from "../common/components/shared/carousel";
+import Button from "@components/shared/button";
 
 const explore = [
   { title: "Pizza", src: PizzaImg },
@@ -29,10 +30,10 @@ const styles = {
   galleryItem: `h-64 basis-full md:h-72 md:basis-[48%] relative`,
   galleryItemOverlay: `flex justify-center items-center absolute w-full h-full top-0 left-0 backdrop-brightness-50 cursor-pointer`,
   galleryOverlayText: `text-5xl text-white font-medium`,
-  showMoreContainer: `flex justify-center items-center w-full my-4`,
+  showMoreContainer: `flex justify-center items-center w-full mt-8`,
   categoryTitleWrap: `w-full text-center border-t`,
   categoryTitle: `py-6 text-3xl font-medium sm:py-8 sm:text-5xl`,
-  carouselWrap: `relative flex items-center w-full`,
+  bannerWrap: `relative flex items-center w-full`,
 };
 
 const Home: NextPageWithLayout = () => {
@@ -40,8 +41,8 @@ const Home: NextPageWithLayout = () => {
   return (
     <div className={styles.pageContainer}>
       <section className={styles.topSection}>
-        <div className={styles.carouselWrap}>
-          <Carousel />
+        <div className={styles.bannerWrap}>
+          <Banner />
         </div>
       </section>
       <section className={styles.bottomSection}>
@@ -50,9 +51,9 @@ const Home: NextPageWithLayout = () => {
         </div>
         <motion.ul
           animate={{
-            height: isExpanded ? "auto" : 540,
+            height: isExpanded ? "auto" : 615,
           }}
-          exit={{}}
+          // exit={{}}
           className={styles.galleryContainer}
         >
           {explore.map((c, i) => (
@@ -74,14 +75,12 @@ const Home: NextPageWithLayout = () => {
           ))}
         </motion.ul>
         <div className={styles.showMoreContainer}>
-          <motion.button
-            className={styles.button}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsExpanded((prev) => !prev)}
+          <Button
+            handler={() => setIsExpanded((prev) => !prev)}
+            styles={styles.button}
           >
             Show {isExpanded ? "Less" : "More"}
-          </motion.button>
+          </Button>
         </div>
       </section>
     </div>

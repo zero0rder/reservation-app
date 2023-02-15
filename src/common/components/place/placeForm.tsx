@@ -3,6 +3,7 @@ import DatePicker from "react-datepicker";
 import { Success } from "./success";
 import { UseValidation } from "../../hooks/useValidation";
 import "react-datepicker/dist/react-datepicker.css";
+import Button from "@components/shared/button";
 
 export interface PlaceFormProps {
   place: {
@@ -21,6 +22,10 @@ export type FormState = {
   time: string;
 };
 
+const styles = {
+  button: `w-2/6 px-6 py-3 font-medium text-white bg-red-700 rounded-lg hover:shadow-md hover:shadow-gray-400 hover:bg-black`,
+};
+
 export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
   const [formState, setFormState] = useState<FormState>({
     name: "",
@@ -30,13 +35,24 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
     time: "5:00 PM",
   });
   const [isReserved, setIsReserved] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const { validate, validationProps } = UseValidation();
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (validate(formState.name, formState.phone) === "valid")
-      setIsReserved(true);
+    setLoading(true);
+    validate(formState.name, formState.phone) === "valid"
+      ? MockHTTP(true).then((res) => setIsReserved(res))
+      : setLoading(false);
   };
+
+  //simulate remote call
+  function MockHTTP(status: boolean) {
+    return new Promise<boolean>((res) => {
+      setTimeout(() => {
+        res(status);
+      }, 2000);
+    });
+  }
 
   return isReserved ? (
     <Success user={formState} place={place} />
@@ -45,20 +61,20 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
       onSubmit={(e) => handleSubmit(e)}
       className={`${
         !showForm ? "flex" : "hidden"
-      } flex-col w-3/4 gap-3 p-4 space-y-4`}
+      } flex-col w-3/4 max-w-[44rem] gap-3 p-4 space-y-4`}
     >
       <label className="w-3/4 m-auto" htmlFor="name">
         <span className="block pb-1 font-medium">Name</span>
         <input
           name="name"
           id="name"
-          className={`w-full p-1 text-sm border rounded-md ${
+          className={`w-full p-2 text-sm border rounded-md ${
             validationProps.name === "valid"
               ? "border-slate-200"
               : validationProps.name === "invalid"
               ? "border-red-700 shadow-red-700"
               : "border-slate-200"
-          } focus:border-emerald-500 focus:outline-none`}
+          } focus:border-2 focus:border-black focus:outline-none`}
           value={formState.name}
           onChange={(e) => setFormState({ ...formState, name: e.target.value })}
         />
@@ -69,7 +85,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
           <select
             name="guests"
             id="guests"
-            className="w-full p-1 border rounded-md border-slate-200 focus:border-emerald-500 focus:outline-none"
+            className="w-full p-2 border rounded-md border-slate-200 focus:border-2 focus:border-black focus:outline-none"
             value={formState.guests}
             onChange={(e) =>
               setFormState({ ...formState, guests: e.target.value })
@@ -89,13 +105,13 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
             type="tel"
             id="phone"
             value={formState.phone}
-            className={`w-full p-1 text-sm border rounded-md ${
+            className={`w-full p-2 text-sm border rounded-md ${
               validationProps.phone === "valid"
                 ? "border-slate-200"
                 : validationProps.phone === "invalid"
                 ? "border-red-700 shadow-red-700"
                 : "border-slate-200"
-            } focus:border-emerald-500 focus:outline-none`}
+            } focus:border-2 focus:border-black focus:outline-none`}
             onChange={(e) =>
               setFormState({ ...formState, phone: e.target.value })
             }
@@ -111,7 +127,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
             //todo: -> onSelect={} close picker
             selected={formState.date}
             onChange={(d) => setFormState({ ...formState, date: d })}
-            className="w-full p-1 text-sm border rounded-md border-slate-200 focus:border-emerald-500 focus:outline-none"
+            className="w-full p-2 text-sm border rounded-md border-slate-200 focus:border-2 focus:border-black focus:outline-none"
             autoComplete="off"
           />
         </label>
@@ -120,7 +136,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
           <select
             name="time"
             id="time"
-            className="w-full p-1 border rounded-md border-slate-200 focus:border-emerald-500 focus:outline-none"
+            className="w-full p-2 border rounded-md border-slate-200 focus:border-2 focus:border-black focus:outline-none"
             value={formState.time}
             onChange={(e) =>
               setFormState({ ...formState, time: e.target.value })
@@ -136,12 +152,9 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
         </label>
       </div>
       <div className="text-center">
-        <button
-          type="submit"
-          className="w-2/6 p-2 mt-4 text-white bg-red-700 border rounded hover:bg-black"
-        >
-          Submit
-        </button>
+        <Button styles={styles.button} type="submit">
+          {loading ? "Reserving..." : "Submit"}
+        </Button>
       </div>
       <div className="p-4 min-h-[5rem]">
         {validationProps.name === "invalid" && (
