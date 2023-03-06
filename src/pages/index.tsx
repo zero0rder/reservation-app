@@ -4,30 +4,17 @@ import DefaultLayout from "@components/layouts/default";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Banner from "@components/shared/banner";
-import PizzaImg from "../assets/pizza.jpg";
-import AsianImg from "../assets/asian.jpg";
-import AfricanImg from "../assets/african.jpg";
-import VeganImg from "../assets/vegan.jpg";
-import MexicanImg from "../assets/mexican.jpg";
-import IndianImg from "../assets/indian.jpg";
 import Button from "@components/shared/button";
-
-const explore = [
-  { title: "Pizza", src: PizzaImg },
-  { title: "Asian", src: AsianImg },
-  { title: "African", src: AfricanImg },
-  { title: "Indian", src: IndianImg },
-  { title: "Vegan", src: VeganImg },
-  { title: "Mexican", src: MexicanImg },
-];
+import Carousel from "@components/shared/carousel";
+import { db_explore } from "src/utils/data";
 
 const styles = {
-  pageContainer: `flex flex-col w-full p-8 grow max-w-[1025px] gap-8`,
-  button: `px-6 py-3 font-medium text-white bg-red-700 rounded-lg hover:shadow-md hover:shadow-gray-400 hover:bg-black`,
+  pageContainer: `flex flex-col w-full p-8 max-w-[1025px] gap-y-12 m-auto`,
+  button: `px-6 py-3 font-medium text-white rounded-lg hover:shadow-md border bg-sky-500`,
   topSection: `flex gap-y-4`,
   bottomSection: `flex items-start justify-center flex-col w-full p-8`,
   galleryContainer: `flex flex-wrap items-center justify-between w-full h-[34rem] gap-y-8 overflow-hidden`,
-  galleryItem: `h-64 basis-full md:h-72 md:basis-[48%] relative`,
+  galleryItem: `h-64 basis-full md:h-72 md:basis-[48%] relative overflow-hidden rounded-3xl`,
   galleryItemOverlay: `flex justify-center items-center absolute w-full h-full top-0 left-0 backdrop-brightness-50 cursor-pointer`,
   galleryOverlayText: `text-5xl text-white font-medium`,
   showMoreContainer: `flex justify-center items-center w-full mt-8`,
@@ -45,9 +32,15 @@ const Home: NextPageWithLayout = () => {
           <Banner />
         </div>
       </section>
+      <section>
+        <h3 className="p-6 text-5xl font-medium text-center border-t">
+          Top Categories
+        </h3>
+        <Carousel />
+      </section>
       <section className={styles.bottomSection}>
         <div className={styles.categoryTitleWrap}>
-          <p className={styles.categoryTitle}>Categories</p>
+          <p className={styles.categoryTitle}>Trending</p>
         </div>
         <motion.ul
           animate={{
@@ -56,7 +49,7 @@ const Home: NextPageWithLayout = () => {
           // exit={{}}
           className={styles.galleryContainer}
         >
-          {explore.map((c, i) => (
+          {db_explore.map((c, i) => (
             <li key={i} className={styles.galleryItem}>
               <Image
                 src={c.src}
