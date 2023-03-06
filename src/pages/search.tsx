@@ -31,7 +31,7 @@ const Search: NextPageWithLayout = () => {
 
   return (
     <MapContext.Provider value={{ isShown, setIsShown }}>
-      <div className="relative flex items-start justify-center flex-1 w-full">
+      <div className="relative flex items-start justify-center w-full h-full">
         <section className="relative flex items-center justify-center w-full h-full text-gray-600">
           <div className="absolute inset-0 bg-gray-300">
             <ReservationMap
