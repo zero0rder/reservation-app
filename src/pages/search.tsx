@@ -6,7 +6,6 @@ import { PlaceForm } from "@components/place/placeForm";
 import { GeolocationPosition, PlaceProps } from "../common/interfaces";
 import { MapContext } from "../common/context";
 import SearchLayout from "@components/layouts/search";
-import Button from "@components/shared/button";
 // interface SearchProps {}
 
 const Search: NextPageWithLayout = () => {
@@ -39,15 +38,15 @@ const Search: NextPageWithLayout = () => {
               place={place}
               setPlace={setPlace}
             />
-            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
-              <Button
-                handler={() => setIsShown(() => true)}
-                styles={`${
+            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full bg-zinc-900">
+              <span
+                onClick={() => setIsShown(() => true)}
+                className={`${
                   !isShown ? "block" : "hidden"
-                } absolute top-4 p-3 text-white bg-black rounded-[50%] left-8 hover:bg-red-700`}
+                } absolute top-4 p-3 text-white text-xl left-8 hover:text-sky-500 cursor-pointer`}
               >
-                Map
-              </Button>
+                Show Map
+              </span>
               <PlaceForm showForm={isShown} place={formProps} />
             </div>
           </div>

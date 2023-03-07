@@ -5,13 +5,12 @@ interface HeaderProps {}
 const pages = [
   { text: "Home", source: "/" },
   { text: "Search", source: "/search" },
-  // { text: "About", source: "/about" },
 ];
 
 const styles = {
   header: `z-10 flex items-center justify-between flex-col sm:flex-row w-full px-12 py-2 sm:px-20 sm:py-4 text-gray-200 h-24 bg-zinc-800`,
   navList: `text-sm sm:text-base flex cursor-pointer gap-x-4`,
-  navLink: `font-medium cursor-pointer hover:text-sky-500`,
+  navLink: `font-medium cursor-pointer hover:text-sky-400`,
   navTitle: `text-xl font-bold sm:text-2xl`,
 };
 const AppHeader: React.FC<HeaderProps> = ({}) => {
@@ -49,10 +48,10 @@ const AppHeader: React.FC<HeaderProps> = ({}) => {
         </div>
       </div>
       <div className="flex gap-x-4">
-        <button className="w-24 p-3 font-medium border rounded-xl bg-sky-500">
+        <button className="px-4 py-2 font-medium border min-w-24 rounded-xl bg-sky-500 hover:bg-transparent">
           Sign In
         </button>
-        <button className="w-24 p-3 font-medium border rounded-xl bg-sky-500">
+        <button className="p-3 font-medium border min-w-24 rounded-xl bg-sky-500 hover:bg-transparent">
           Sign Up
         </button>
       </div>

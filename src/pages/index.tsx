@@ -10,7 +10,7 @@ import { db_explore } from "src/utils/data";
 
 const styles = {
   pageContainer: `flex flex-col w-full p-8 max-w-[1025px] gap-y-12 m-auto`,
-  button: `px-6 py-3 font-medium text-white rounded-lg hover:shadow-md border bg-sky-500`,
+  button: `px-6 py-3 font-medium text-white rounded-lg hover:shadow-md hover:bg-sky-400 border bg-sky-500`,
   topSection: `flex gap-y-4`,
   bottomSection: `flex items-start justify-center flex-col w-full p-8`,
   galleryContainer: `flex flex-wrap items-center justify-between w-full h-[34rem] gap-y-8 overflow-hidden`,
@@ -40,7 +40,7 @@ const Home: NextPageWithLayout = () => {
       </section>
       <section className={styles.bottomSection}>
         <div className={styles.categoryTitleWrap}>
-          <p className={styles.categoryTitle}>Trending</p>
+          <p className={styles.categoryTitle}>🔥 Trending Near You 🔥</p>
         </div>
         <motion.ul
           animate={{

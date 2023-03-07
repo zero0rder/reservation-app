@@ -4,6 +4,7 @@ import { Success } from "./success";
 import { UseValidation } from "../../hooks/useValidation";
 import "react-datepicker/dist/react-datepicker.css";
 import Button from "@components/shared/button";
+import Loader from "../shared/loader";
 
 export interface PlaceFormProps {
   place: {
@@ -23,7 +24,7 @@ export type FormState = {
 };
 
 const styles = {
-  button: `w-2/6 px-6 py-3 font-medium text-white bg-red-700 rounded-lg hover:shadow-md hover:shadow-gray-400 hover:bg-black`,
+  button: `px-11 py-3 font-medium text-white bg-sky-500 rounded-xl border hover:bg-sky-400`,
 };
 
 export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
@@ -49,10 +50,13 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
   function MockHTTP(status: boolean) {
     return new Promise<boolean>((res) => {
       setTimeout(() => {
+        setLoading((prev) => !prev);
         res(status);
-      }, 2000);
+      }, 2500);
     });
   }
+
+  if (loading) return <Loader />;
 
   return isReserved ? (
     <Success user={formState} place={place} />
@@ -61,20 +65,15 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
       onSubmit={(e) => handleSubmit(e)}
       className={`${
         !showForm ? "flex" : "hidden"
-      } flex-col w-3/4 max-w-[44rem] gap-3 p-4 space-y-4`}
+      } flex-col w-3/4 max-w-[36rem] gap-3 px-4 py-14 space-y-4 rounded-3xl bg-zinc-800 text-white`}
     >
+      <h1 className="text-4xl font-bold text-center">Reservation</h1>
       <label className="w-3/4 m-auto" htmlFor="name">
         <span className="block pb-1 font-medium">Name</span>
         <input
           name="name"
           id="name"
-          className={`w-full p-2 text-sm border rounded-md ${
-            validationProps.name === "valid"
-              ? "border-slate-200"
-              : validationProps.name === "invalid"
-              ? "border-red-700 shadow-red-700"
-              : "border-slate-200"
-          } focus:border-2 focus:border-black focus:outline-none`}
+          className={`w-full p-3 text-sm rounded-xl bg-zinc-900 focus:outline-none`}
           value={formState.name}
           onChange={(e) => setFormState({ ...formState, name: e.target.value })}
         />
@@ -85,7 +84,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
           <select
             name="guests"
             id="guests"
-            className="w-full p-2 border rounded-md border-slate-200 focus:border-2 focus:border-black focus:outline-none"
+            className="w-full p-3 rounded-xl bg-zinc-900 focus:outline-none"
             value={formState.guests}
             onChange={(e) =>
               setFormState({ ...formState, guests: e.target.value })
@@ -105,13 +104,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
             type="tel"
             id="phone"
             value={formState.phone}
-            className={`w-full p-2 text-sm border rounded-md ${
-              validationProps.phone === "valid"
-                ? "border-slate-200"
-                : validationProps.phone === "invalid"
-                ? "border-red-700 shadow-red-700"
-                : "border-slate-200"
-            } focus:border-2 focus:border-black focus:outline-none`}
+            className={`w-full p-3 text-sm rounded-xl bg-zinc-900 focus:outline-none`}
             onChange={(e) =>
               setFormState({ ...formState, phone: e.target.value })
             }
@@ -127,7 +120,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
             //todo: -> onSelect={} close picker
             selected={formState.date}
             onChange={(d) => setFormState({ ...formState, date: d })}
-            className="w-full p-2 text-sm border rounded-md border-slate-200 focus:border-2 focus:border-black focus:outline-none"
+            className="w-full p-3 text-sm rounded-xl bg-zinc-900 focus:outline-none"
             autoComplete="off"
           />
         </label>
@@ -136,7 +129,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
           <select
             name="time"
             id="time"
-            className="w-full p-2 border rounded-md border-slate-200 focus:border-2 focus:border-black focus:outline-none"
+            className="w-full p-3 rounded-xl bg-zinc-900 focus:outline-none"
             value={formState.time}
             onChange={(e) =>
               setFormState({ ...formState, time: e.target.value })
@@ -156,14 +149,14 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
           {loading ? "Reserving..." : "Submit"}
         </Button>
       </div>
-      <div className="p-4 min-h-[5rem]">
+      {/* <div className="p-4 min-h-[5rem]">
         {validationProps.name === "invalid" && (
           <div className="text-red-600">please enter name</div>
         )}
         {validationProps.phone === "invalid" && (
           <div className="text-red-600">please enter valid phone number</div>
         )}
-      </div>
+      </div> */}
     </form>
   );
 };

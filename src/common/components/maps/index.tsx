@@ -15,8 +15,7 @@ export const ReservationMap: React.FC<MapProps> = ({
     width: "100%",
     transition: "0.5s all",
     zIndex: 2,
-    transform: isShown ? "translateY(0)" : "translateY(-110%)",
-    // filter: place ? "none" : "grayscale(1) contrast(1.2) opacity(1)",
+    transform: isShown ? "translateY(0)" : "translateY(-120%)",
   };
 
   const offVisibility = [{ visibility: "off" }];
@@ -66,7 +65,7 @@ const PlaceContent: React.FC<PlaceContentProps> = ({ place }) => {
       <p>{place.formatted_address}</p>
       <span>{place.formatted_phone_number}</span>
       <button
-        className="p-2 text-[0.65rem] mt-2 font-medium border rounded bg-black hover:bg-red-700 border-white text-white"
+        className="p-2 text-[0.65rem] mt-2 font-medium border rounded bg-sky-500 hover:bg-sky-400 border-white text-white"
         onClick={() => setIsShown(false)}
       >
         Reserve Now

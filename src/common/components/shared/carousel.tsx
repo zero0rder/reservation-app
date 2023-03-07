@@ -36,16 +36,14 @@ const settings = {
 const styles = {
   carouselItemOverlay: `flex justify-center items-center absolute w-full h-full top-0 left-0 backdrop-brightness-50 cursor-pointer`,
   carouselOverlayText: `text-3xl text-white font-medium`,
+  sliderTile: `relative h-40 overflow-hidden rounded-3xl`,
 };
 
 const Carousel: React.FC<CarouselProps> = ({}) => {
   return (
     <Slider {...settings}>
       {db_explore.map((e, i) => (
-        <div
-          key={`exkey-${i}`}
-          className="relative h-40 overflow-hidden rounded-3xl"
-        >
+        <div key={`exkey-${i}`} className={styles.sliderTile}>
           <Image
             src={e.src}
             alt="category"
