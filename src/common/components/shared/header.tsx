@@ -9,7 +9,7 @@ const pages = [
 ];
 
 const styles = {
-  header: `relative z-10 flex items-center justify-between flex-row w-full px-4 py-2 sm:px-20 sm:py-4 text-gray-200 h-24 bg-zinc-800`,
+  header: `relative z-10 flex items-center justify-between flex-row w-full p-4 md:px-8 text-gray-200 h-24 bg-zinc-800`,
   navList: `text-sm sm:text-base flex cursor-pointer gap-x-4`,
   navLink: `font-medium cursor-pointer hover:text-sky-400`,
   navTitle: `text-xl font-bold sm:text-2xl`,

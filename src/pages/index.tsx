@@ -9,7 +9,7 @@ import Carousel from "@components/shared/carousel";
 import { db_explore } from "src/utils/data";
 
 const styles = {
-  pageContainer: `flex flex-col w-full p-4 md:p-8 max-w-[1025px] gap-y-12 m-auto`,
+  pageContainer: `flex flex-col w-full md:p-8 max-w-[1025px] gap-y-12 m-auto`,
   button: `px-6 py-3 font-medium text-white rounded-lg hover:shadow-md hover:bg-sky-400 border bg-sky-500`,
   topSection: `flex gap-y-4`,
   bottomSection: `flex items-start justify-center flex-col w-full px-2 py-8 md:p-8`,
@@ -32,7 +32,7 @@ const Home: NextPageWithLayout = () => {
           <Banner />
         </div>
       </section>
-      <section>
+      <section className="overflow-x-clip md:overflow-x-visible">
         <h3 className="p-6 text-3xl font-medium text-center border-t md:text-5xl">
           Top Categories
         </h3>

@@ -32,7 +32,7 @@ const styles = {
 
 const Carousel: React.FC<CarouselProps> = ({}) => {
   return (
-    <Slider className="w-[91%] md:w-full m-auto" {...settings}>
+    <Slider className="flex w-full m-0 py-4" {...settings}>
       {db_explore.map((e, i) => (
         <div key={`exkey-${i}`} className={styles.sliderTile}>
           <Image

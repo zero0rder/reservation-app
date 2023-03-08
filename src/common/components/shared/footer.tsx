@@ -22,16 +22,16 @@ const AppFooter: React.FC<AppFooterProps> = () => {
       <div>
         <div className="flex flex-col md:flex-row gap-y-12">
           <div className="flex flex-col w-full md:w-2/5 gap-y-6">
-            <h2 className="text-2xl font-medium">
+            <h2 className="text-4xl font-medium">
               Reservation <span className="text-sky-500">Hub</span>
             </h2>
             <span className="text-xl">Get the latest updates</span>
-            <div className="flex">
+            <div className="flex h-12">
               <input
                 placeholder="your email"
                 className="p-2 rounded-lg outline-0 bg-zinc-900"
               />
-              <button className="w-32 px-2 py-8 ml-2 font-medium md:w-24 md:p-2 rounded-xl bg-sky-500">
+              <button className="w-full ml-2 font-medium md:px-2 md:w-24 md:p-2 rounded-xl bg-sky-500">
                 Email Me!
               </button>
             </div>
@@ -61,9 +61,10 @@ const AppFooter: React.FC<AppFooterProps> = () => {
         </div>
       </div>
       <div className="flex flex-col justify-between pt-12 md:flex-row gap-y-4">
-        <div className="text-center">
+        <div className="text-sm text-center">
           <span>
-            Reservation Hub, Inc. <MdCopyright className="inline pb-1" />{" "}
+            Reservation Hub, Inc.{" "}
+            <MdCopyright className="inline pb-1 text-[1rem]" />{" "}
             {new Date().getFullYear()} All Rights Reserved
           </span>
         </div>

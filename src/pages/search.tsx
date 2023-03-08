@@ -8,7 +8,6 @@ import { MapContext } from "../common/context";
 import SearchLayout from "@components/layouts/search";
 import { GrMapLocation } from "react-icons/gr";
 import { motion } from "framer-motion";
-// interface SearchProps {}
 
 const Search: NextPageWithLayout = () => {
   const [geolocation, setGeolocation] = useState<google.maps.LatLngLiteral>({
