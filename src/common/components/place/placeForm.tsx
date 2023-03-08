@@ -65,7 +65,7 @@ export const PlaceForm: React.FC<PlaceFormProps> = ({ place, showForm }) => {
       onSubmit={(e) => handleSubmit(e)}
       className={`${
         !showForm ? "flex" : "hidden"
-      } flex-col w-3/4 max-w-[36rem] gap-3 px-4 py-14 space-y-4 rounded-3xl bg-zinc-800 text-white`}
+      } flex-col w-full max-w-[36rem] gap-3 px-4 py-14 space-y-4 rounded-3xl bg-zinc-800 text-white`}
     >
       <h1 className="text-4xl font-bold text-center">Reservation</h1>
       <label className="w-3/4 m-auto" htmlFor="name">

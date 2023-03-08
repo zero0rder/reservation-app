@@ -6,6 +6,8 @@ import { PlaceForm } from "@components/place/placeForm";
 import { GeolocationPosition, PlaceProps } from "../common/interfaces";
 import { MapContext } from "../common/context";
 import SearchLayout from "@components/layouts/search";
+import { GrMapLocation } from "react-icons/gr";
+import { motion } from "framer-motion";
 // interface SearchProps {}
 
 const Search: NextPageWithLayout = () => {
@@ -38,15 +40,18 @@ const Search: NextPageWithLayout = () => {
               place={place}
               setPlace={setPlace}
             />
-            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full bg-zinc-900">
-              <span
+            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full px-4 bg-zinc-900">
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
                 onClick={() => setIsShown(() => true)}
                 className={`${
-                  !isShown ? "block" : "hidden"
-                } absolute top-4 p-3 text-white text-xl left-8 hover:text-sky-500 cursor-pointer`}
+                  !isShown ? "flex" : "hidden"
+                } absolute z-10 top-[-5rem] md:top-4 p-2 md:p-3 text-white left-24 md:left-8 cursor-pointer flex-col items-center`}
               >
-                Show Map
-              </span>
+                <GrMapLocation className="gr-map text-2xl md:text-[2rem]" />
+                <span className="text-[0.75rem] md:text-sm">Show Map</span>
+              </motion.span>
               <PlaceForm showForm={isShown} place={formProps} />
             </div>
           </div>

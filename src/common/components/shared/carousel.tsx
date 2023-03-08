@@ -12,25 +12,16 @@ const settings = {
   speed: 500,
   slidesToShow: 4,
   slidesToScroll: 1,
-  //   responsive: [
-  //     {
-  //         breakpoint: 1024,
-  //         settings: {
-  //           slidesToShow: 3,
-  //           slidesToScroll: 3,
-  //           infinite: true,
-  //           dots: true
-  //         }
-  //       },
-  //       {
-  //         breakpoint: 600,
-  //         settings: {
-  //           slidesToShow: 2,
-  //           slidesToScroll: 2,
-  //           initialSlide: 2
-  //         }
-  //       },
-  //   ]
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        slidesToShow: 2,
+        slidesToScroll: 2,
+        initialSlide: 2,
+      },
+    },
+  ],
 };
 
 const styles = {
@@ -41,7 +32,7 @@ const styles = {
 
 const Carousel: React.FC<CarouselProps> = ({}) => {
   return (
-    <Slider {...settings}>
+    <Slider className="w-[91%] md:w-full m-auto" {...settings}>
       {db_explore.map((e, i) => (
         <div key={`exkey-${i}`} className={styles.sliderTile}>
           <Image

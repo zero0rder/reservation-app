@@ -17,7 +17,8 @@ body {
 
 #__next {
   height: inherit;
-  // overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -75,6 +76,10 @@ button.slick-arrow.slick-prev:before {
 }
 .global_loader::after {
   animation-delay: 1s;
+}
+
+.gr-map path {
+  fill: #fff;
 }
 
 @keyframes animloader {
